@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hrudansh Deepak Churi - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            text-shadow: 0 0 5px #ffdd40, 0 0 10px #ffdd40, 0 0 15px #ffdd40; /* Glow effect */
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h2.section-title::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #6a11cb;
+            margin: 10px auto 20px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideInFromTop 1s ease-out forwards;
+            padding: 10px;
+            border-radius: 5px;
+            text-shadow: 0 0 5px #ffdd40, 0 0 10px #ffdd40, 0 0 15px #ffdd40; /* Glow effect */
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        header .cta-buttons {
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 2s ease-out forwards;
+        }
+
+        header .cta-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: #fff;
+            background: #2575fc;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        header .cta-buttons a:hover {
+            background: #ffdd40;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #6a11cb;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffdd40;
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        #about {
+            text-align: center;
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .about-card {
+            background: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Skills Section */
+        #skills ul {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        #skills ul li {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        #skills ul li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding-bottom: 60px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            color: #2575fc;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        #contact p {
+            margin-bottom: 10px;
+        }
+
+        #contact a {
+            color: #2575fc;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: #ffdd40;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Hrudansh Deepak Churi</h1>
+        <p>Aspiring AI/ML Engineer | Android Developer</p>
+        <p>Transforming ideas into impactful solutions</p>
+        <div class="cta-buttons">
+            <a href="#contact">Contact Me</a>
+            <a href="#projects">View Projects</a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p>
+            I am a BTech student specializing in Artificial Intelligence and Machine Learning. I have a passion for Android app development, programming, and creating innovative AI solutions. With hands-on experience in Python, SQL, and Android development, I aim to build meaningful solutions to creating innovative AI solutions. With hands-on experience in Python, SQL, and Android development, I aim to build meaningful solutions to everyday challenges.
+        </p>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Education</h3>
+                <p>
+                    <strong>St. John College of Engineering and Management</strong><br>
+                    B.E. in Artificial Intelligence and Machine Learning<br>
+                    <strong>MK Junior College</strong><br>
+                    HSC, 2021<br>
+                    <strong>Don Bosco High School</strong><br>
+                    SSC, 2019
+                </p>
+            </div>
+            <div class="about-card">
+                <h3>Certificates</h3>
+                <p>
+                    Business Analysis & Process Management - Coursera<br>
+                    Android App Development Workshop<br>
+                    Python Programming Essentials
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <ul>
+            <li>Python</li>
+            <li>SQL</li>
+            <li>Android Studio</li>
+            <li>Windows OS</li>
+            <li>MS Office</li>
+        </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Farm Connect</h3>
+                <p>
+                    AI-driven disease detection and farmer support system with features such as disease prediction, chatbot assistance, and product recommendations.
+                </p>
+            </div>
+            <div class="project-card">
+                <h3>Ambulance Locator</h3>
+                <p>
+                    A mobile app to locate and book the nearest ambulance, ensuring quick response during emergencies.
+                </p>
+            </div>
+            <div class="project-card">
+                <h3>Gym Management System</h3>
+                <p>
+                    Software to manage gym memberships, trainer schedules, and payment tracking efficiently.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p>Email: <a href="mailto:hrudansh@example.com">hrudansh@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/Hrudansh" target="_blank">https://github.com/Hrudansh</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/hrudansh" target="_blank">https://linkedin.com/in/hrudansh</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hrudansh Deepak Churi. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Smooth Scroll -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
